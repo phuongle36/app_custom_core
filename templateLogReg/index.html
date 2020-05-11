@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register Login with Authentication</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
+    <script src="js/login.js" defer></script>
+</head>
+
+<body>
+    <h1>Welcome to Monitor System 🚀 </h1>
+    <div class="main">
+        <div class="w3">
+            <div class="signin-form profile">
+                <h3>Login</h3>
+
+                <div class="login-form">
+                    <form id="login" action="/login" method="post" onsubmit="event.preventDefault();">
+                        <input type="text" for="email" name="logemail" placeholder="E-mail" required>
+                        <input type="password" for="password" name="logpassword" placeholder="Password" required>
+                        <div class="tp">
+                            <input type="submit" value="LOGIN NOW">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="agile">
+            <div class="signin-form profile">
+                <h3>Register</h3>
+
+                <div class="login-form">
+                    <form id="signin" action="/signin" method="post" onsubmit="event.preventDefault();">
+                        <input type="text" for="fname" name="fname" placeholder="First name" required>
+                        <input type="text" for="lname" name="lname" placeholder="Last name" required>
+                        <input type="text" for="email" name="email" placeholder="E-mail" required>
+                        <input type="password" for="password" name="password" placeholder="Password" id="password" required>
+                        <input type="password" for="password" name="passwordConf" placeholder="Confirm Password" id="password_conf" required>
+                        <input type="submit" value="REGISTER">
+                    </form>
+                </div>
+                <p><a> By clicking register, I agree to your terms</a></p>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</body>
+
+</html>

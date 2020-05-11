@@ -1,0 +1,81 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+/*--start editing from here--*/
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+/*--end reset--*/
+body {
+    font-family: 'Khand', sans-serif;
+    background: url(../images/bg.png)repeat #44AD90 0px 0px;
+    background-attachment: fixed;
+}
+h1 {
+    font-size: 3em;
+    text-align: center;
+    color: #fff;
+    font-weight: 100;
+}
+/*--main--*/
+.main {
+    padding: 3em 0 0;
+}
+.weather-left {
+    background: url(../images/beca.jpg)no-repeat 0px 0px;
+    text-align: center;
+}
+.weather-right{
+    background: url(../images/beca.jpg)no-repeat 0px 0px;
+    text-align: center;
+}
+.weather-text {
+    padding: 1.5em 0 0;
+}
+.weather-text h3 {
+    font-size: 1.8em;
+    color: #fff;
+    font-weight: 100;
+	margin-bottom: .5em;
+}
+.weather-text h4 {
+    font-size: 4em;
+    color: #fff;
+}
+.weather-left.weather-grid3 {
+	background: url(../images/beca.jpg)no-repeat 0px 0px;
+	background-size:cover;
+	margin-top: 1em;
+}
+.weather-left.weather-right.weather-grid3{
+	background: url(../images/beca.jpg)no-repeat 0px 0px;
+	background-size:cover;
+	margin-top: 1em;
+}
+/*--copyright--*/
+.copyright {
+    margin: 2em 0 1em;
+    text-align: center;
+}
+.copyright p {
+    font-size: 1em;
+    color: #fff;
+    line-height: 1.8em;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+/*--//responsive-design---*/
