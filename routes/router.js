@@ -25,34 +25,28 @@ router.get('/prelogin', function (req, res, next) {
 //POST route for updating data
 router.post('/login', function (req, res, next) {
     User.authenticate(req.body.logemail, req.body.logpassword, function (error, user) {
-        if (error || !user) {
-            return res.send('fail');
-        } else {
-            req.session.userId = user._id;
-            return res.redirect('/profile');
-        }
+        req.session.userId = user._id;
+        return res.redirect('/profile');
     });
 });
 
 // GET route after registering
 router.get('/profile', function (req, res, next) {
-    User.findById(req.session.userId).exec(function (error, user) {
-        if (error) {
-            return next(error);
-        } else {
-            if (user === null) {
-                var err = new Error('Not authorized! Go back!');
-                err.status = 400;
-                return next(err);
-            } else {
-                return res.sendFile(path.join(__dirname, '../templateLogReg/', 'profile.html'));
-            }
-        }
-    });
+    checkUser(req, res, next, 'profile.html');
+});
+
+// GET chart route
+router.get('/chart', function (req, res, next) {
+    checkUser(req, res, next, 'chart.html');
 });
 
 // GET sensor monitoring route
 router.get('/sensor', function (req, res, next) {
+    checkUser(req, res, next, 'monitor.html');
+});
+
+// GET sensor monitoring route
+router.post('/user', function (req, res, next) {
     User.findById(req.session.userId).exec(function (error, user) {
         if (error) {
             return next(error);
@@ -62,7 +56,7 @@ router.get('/sensor', function (req, res, next) {
                 err.status = 400;
                 return next(err);
             } else {
-                return res.sendFile(path.join(__dirname, '../templateLogReg/', 'monitor.html'));
+                return res.send(user);
             }
         }
     });
@@ -128,6 +122,22 @@ router.get('/updateMonitor', function (req, res, next) {
         }
     }
 });
+
+function checkUser(req, res, next, fileName) {
+    User.findById(req.session.userId).exec(function (error, user) {
+        if (error) {
+            return next(error);
+        } else {
+            if (user === null) {
+                var err = new Error('Not authorized! Go back!');
+                err.status = 400;
+                return next(err);
+            } else {
+                return res.sendFile(path.join(__dirname, '../templateLogReg/', fileName));
+            }
+        }
+    });
+}
 
 function getMongoObj(topicName, callback) {
     mongoClient.connect(mongoUrl, function (err, db) {

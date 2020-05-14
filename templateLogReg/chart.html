@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sensor Monitoring</title>
+    <title>Data Analys</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,15 +19,6 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-    <style>
-        .monitoring-image {
-            width: inherit;
-        }
-        .temperature-alert {
-            opacity: 0;
-        }
-    </style>
     <script src="js/user.js" defer></script>
 
 </head>
@@ -75,7 +66,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="/chart">
+                <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
@@ -142,41 +133,23 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Sensor Monitoring</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Data Analys</h1>
                     </div>
 
                     <div class="row">
 
-                        <div class="col-lg-6">
+                        <div class="col-12">
                             <!-- Basic Card Example -->
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Temperature</h6>
-                                </div>
-                                <div class="card-body row">
-                                    <div class="col-md-8">
-                                        <h4>Temperature: <span class="sensor-temperature"></span></h4>
-                                        <h4 class="temperature-alert"></h4>
+                                <!-- Area Chart -->
+                                <div class="card shadow">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">Chart</h6>
                                     </div>
-                                    <div class="col-md-4">
-                                        <img class="monitoring-image" src="images/beca.jpg" alt="be-ca">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <!-- Basic Card Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">pH</h6>
-                                </div>
-                                <div class="card-body row">
-                                    <div class="col-md-8">
-                                        <h4>pH: </h4>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <img class="monitoring-image" src="images/beca.jpg" alt="be-ca">
+                                    <div class="card-body">
+                                        <div class="chart-area">
+                                            <canvas id="myAreaChart"></canvas>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -225,7 +198,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
                 </div>
             </div>
         </div>
@@ -240,7 +213,12 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-    <script src="js/monitor.js" defer></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/chart.js"></script>
 
 </body>
 
