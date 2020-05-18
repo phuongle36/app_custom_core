@@ -20,6 +20,13 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script src="js/user.js" defer></script>
+    <style>
+        @media (min-width: 1200px) {
+            .chart-area {
+                height: 25em;
+            }
+        }
+    </style>
 
 </head>
 
@@ -58,14 +65,14 @@
             </div>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="monitor.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Sensor</span></a>
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
@@ -134,6 +141,10 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Data Analys</h1>
+                        <div class="custom-date">
+                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Temperature</a>
+                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> pH</a>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -144,12 +155,69 @@
                                 <!-- Area Chart -->
                                 <div class="card shadow">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Chart</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Realtime-Chart (Today)</h6>
                                     </div>
                                     <div class="card-body">
                                         <div class="chart-area">
                                             <canvas id="myAreaChart"></canvas>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <!-- Basic Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Log (Today)</h6>
+                                </div>
+                                <div class="card-body row">
+                                    <div class="col-12">
+                                        <h4><span class="date-log"></span><span style="float: right;" class="temperature-log"></span></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <!-- Basic Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Alert</h6>
+                                </div>
+                                <div class="card-body row">
+                                    <div class="col-12">
+                                        <h4><span class="alert-log"></span></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <!-- Basic Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">About Temperature</h6>
+                                </div>
+                                <div class="card-body row">
+                                    <div class="col-12">
+                                        <p>The temperature of water is an important variable in aquaculture, but in most types of aquaculture it cannot be controlled and depends upon the amount of solar radiation, air temperature, or the temperature of water passing through the culture unit. Aquatic animals are strongly affected by temperature; aquaculture operations must be timed to correspond to water temperature, and temperature measurements are critical for efficient operations.</p>
+                                        <p>Temperature is an important factor effecting the growth and survival of all organisms. However, water temperature is especially important to the growth and survival of shrimp, fish, and other aquaculture animals, because they are poikilothermic (coldblooded). Poikilothermic animals cannot control body temperature, and they equilibrate with the temperature of the surrounding water. Aquaculture animals usually are classified as coldwater, warmwater, and tropical species.</p>
+                                        <p>Coldwater species will not tolerate temperatures above 20 to 25 degrees-C. Warmwater species will usually not reproduce at temperatures below 20 degrees-C or grow at temperatures below 10 to 15 degrees-C, but they survive much lower winter temperatures. Tropical species will die at temperatures of 10 to 20 degrees-C, and most do not grow at temperatures below 25 degrees-C.</p>
+                                        <p>For aquarium, a good range is 76° to 80°F (25° to 27°C).</p>
+                                        <p>In the line chart above, the high-limit (<span style="color: rgba(204, 0, 0, 1);">red line</span>) and the low-limit (<span style="color: rgba(78, 115, 223, 1);">blue line</span>) shown the temperature range that if the aquarium temperature (<span style="color: rgba(0, 136, 39, 1);">green line</span>) is higher or lower these line will cause bad effects.</p>
+                                        <p>References:</p>
+                                        <p><a href="https://www.aquaculturealliance.org/advocate/water-temperature-in-aquaculture/" target="_blank" rel="noopener noreferrer">Water temperature in aquaculture</a></p>
+                                        <p><a href="http://www.tfhmagazine.com/aquarium-basics/temperature-control.htm" target="_blank" rel="noopener noreferrer">Temperature Control</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +266,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="/logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -215,7 +283,7 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/chart.js/Chart.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="js/chart.js"></script>

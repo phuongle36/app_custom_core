@@ -5860,7 +5860,7 @@ function parseVisibleItems(chart, handler) {
 		meta = chart.getDatasetMeta(i);
 		for (j = 0, jlen = meta.data.length; j < jlen; ++j) {
 			var element = meta.data[j];
-			if (!element._view.skip) {
+			if (typeof element._view.skip !== "undefined" && !element._view.skip) {
 				handler(element);
 			}
 		}

@@ -2,51 +2,58 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-function number_format(number, decimals, dec_point, thousands_sep) {
-    // *     example: number_format(1234.56, 2, ',', ' ');
-    // *     return: '1 234,56'
-    number = (number + '').replace(',', '').replace(' ', '');
-    var n = !isFinite(+number) ? 0 : +number,
-        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-        sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-        s = '',
-        toFixedFix = function (n, prec) {
-            var k = Math.pow(10, prec);
-            return '' + Math.round(n * k) / k;
-        };
-    // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-    if (s[0].length > 3) {
-        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-    }
-    if ((s[1] || '').length < prec) {
-        s[1] = s[1] || '';
-        s[1] += new Array(prec - s[1].length + 1).join('0');
-    }
-    return s.join(dec);
+function number_format(number) {
+    return number;
 }
 
-// Area Chart Example
+var chartLabel = [];
+var chartData = [];
 var ctx = document.getElementById("myAreaChart");
-var myLineChart = new Chart(ctx, {
+var myLineChart = new Chart(ctx, options);
+var temperatureLog = $('.temperature-log');
+var dateLog = $('.date-log');
+var alertLog = $('.alert-log');
+var options = {
     type: 'line',
     data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: chartLabel,
         datasets: [{
-            label: "Earnings",
+            label: "Temperature ",
             lineTension: 0.3,
-            backgroundColor: "rgba(78, 115, 223, 0.05)",
+            backgroundColor: "rgba(255, 255, 255, 0)",
+            borderColor: "rgba(0, 136, 39, 1)",
+            pointRadius: 3,
+            pointBackgroundColor: "rgba(78, 115, 223, 1)",
+            pointBorderColor: "rgba(78, 115, 223, 1)",
+            pointHitRadius: 10,
+            pointBorderWidth: 2,
+            data: chartData,
+        },
+        {
+            label: "Low Limit ",
+            lineTension: 0.3,
+            backgroundColor: "rgba(50, 66, 92, 0.2)",
             borderColor: "rgba(78, 115, 223, 1)",
             pointRadius: 3,
             pointBackgroundColor: "rgba(78, 115, 223, 1)",
             pointBorderColor: "rgba(78, 115, 223, 1)",
-            pointHoverRadius: 3,
-            pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-            pointHoverBorderColor: "rgba(78, 115, 223, 1)",
             pointHitRadius: 10,
             pointBorderWidth: 2,
-            data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+            fill: 'start',
+            data: [25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25],
+        },
+        {
+            label: "High Limit ",
+            lineTension: 0.3,
+            backgroundColor: "rgba(50, 66, 92, 0.2)",
+            borderColor: "rgba(204, 0, 0, 1)",
+            pointRadius: 3,
+            pointBackgroundColor: "rgba(78, 115, 223, 1)",
+            pointBorderColor: "rgba(78, 115, 223, 1)",
+            pointHitRadius: 10,
+            pointBorderWidth: 2,
+            fill: 'end',
+            data: [28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28],
         }],
     },
     options: {
@@ -65,20 +72,19 @@ var myLineChart = new Chart(ctx, {
                     unit: 'date'
                 },
                 gridLines: {
-                    display: false,
+                    display: true,
                     drawBorder: false
                 },
                 ticks: {
-                    maxTicksLimit: 7
+                    maxTicksLimit: 12
                 }
             }],
             yAxes: [{
                 ticks: {
-                    maxTicksLimit: 5,
                     padding: 10,
                     // Include a dollar sign in the ticks
-                    callback: function (value, index, values) {
-                        return '$' + number_format(value);
+                    callback: function (value) {
+                        return number_format(value) + '°C';
                     }
                 },
                 gridLines: {
@@ -106,13 +112,60 @@ var myLineChart = new Chart(ctx, {
             displayColors: false,
             intersect: false,
             mode: 'index',
-            caretPadding: 10,
-            callbacks: {
-                label: function (tooltipItem, chart) {
-                    var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                    return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-                }
-            }
+            caretPadding: 10
         }
     }
+}
+
+function logHandler(dateLog, temperatureLog, chartLabel, chartData) {
+    dateLog.css('opacity', '0');
+    dateLog.delay(500).animate({ opacity: 1}, 300);
+    dateLog.text(chartLabel[chartLabel.length - 1]);
+    temperatureLog.css('opacity', '0');
+    temperatureLog.delay(500).animate({ opacity: 1}, 300);
+    temperatureLog.text(chartData[chartData.length - 1] + '°C');
+
+    if (temperatureLog.text().split('°')[0] > 28) {
+        alertLog.text('At this time, the temperature is too high for the aquarium, please adjust this!');
+    } else if (temperatureLog.text().split('°')[0] < 25) {
+        alertLog.text('At this time, the temperature is too low for the aquarium, please adjust this!');
+    } else {
+        alertLog.text('The temperature is perfect, no issue for your aquarium now!');
+    }
+}
+
+$.post('/setChart').done(function (data) {
+    if (data) {
+        for (var i = 0; i < data.length; i++) {
+            var splitDate = data[i].date.split(' ');
+            splitDate = splitDate[1].split(':');
+            splitDate = splitDate[0] + ':' + splitDate[1];
+            chartLabel.push(splitDate);
+            chartData.push(data[i].temp);
+        }
+
+        chartData.reverse();
+        chartLabel.reverse();
+        myLineChart = new Chart(ctx, options);
+        logHandler(dateLog, temperatureLog, chartLabel, chartData);
+    }
 });
+
+setInterval(function () {
+    $.post('/updateChart').done(function (data) {
+        if (data) {
+            var splitDate = data[0].date.split(' ');
+            splitDate = splitDate[1].split(':');
+            splitDate = splitDate[0] + ':' + splitDate[1];
+
+            if (chartLabel[chartLabel.length - 1] !== splitDate) {
+                chartLabel.shift();
+                chartData.shift();
+                chartLabel.push(splitDate);
+                chartData.push(data[0].temp);
+                myLineChart = new Chart(ctx, options);
+                logHandler(dateLog, temperatureLog, chartLabel, chartData);
+            }
+        }
+    });
+}, 120000);

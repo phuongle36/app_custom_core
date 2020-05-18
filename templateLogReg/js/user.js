@@ -8,6 +8,12 @@ $(document).ready(function () {
             if (user) {
                 userName.text(user.fname + ' ' + user.lname);
                 userMail.text(user.email);
+
+                if (user.role === '1') {
+                    userRole.text('Developer');
+                } else {
+                    userRole.text('System Admin');
+                }
             }
         });
     };
