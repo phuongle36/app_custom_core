@@ -24,7 +24,8 @@
         .monitoring-image {
             width: inherit;
         }
-        .temperature-alert {
+        .temperature-alert,
+        .pH-alert {
             opacity: 0;
         }
     </style>
@@ -173,7 +174,8 @@
                                 </div>
                                 <div class="card-body row">
                                     <div class="col-md-8">
-                                        <h4>pH: </h4>
+                                        <h4>pH: <span class="sensor-pH"></span></h4>
+                                        <h4 class="pH-alert"></h4>
                                     </div>
                                     <div class="col-md-4">
                                         <img class="monitoring-image" src="images/beca.jpg" alt="be-ca">

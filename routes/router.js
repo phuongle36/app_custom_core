@@ -115,14 +115,15 @@ router.get('/updateMonitor', function (req, res, next) {
         if (err) {
             throw err;
         } else {
-            return res.send(obj[0].temp);
+            return res.send(obj);
         }
     }
 });
 
 // update chart
-router.post('/setChart', function (req, res, next) {
-    getMongoObj('temperatureSensor', {topic: 'sensorTest'}, callback, 12);
+router.get('/setChart', function (req, res, next) {
+    var viewData = req.query.data;
+    getMongoObj('temperatureSensor', viewData.finder, callback, parseInt(viewData.limit));
     function callback(err, obj) {
         if (err) {
             throw err;
