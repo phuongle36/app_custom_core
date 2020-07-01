@@ -43,6 +43,11 @@ router.get('/sensor', function (req, res, next) {
 });
 
 // GET sensor monitoring route
+router.get('/about', function (req, res, next) {
+    checkUser(req, res, next, 'about.html');
+});
+
+// GET sensor monitoring route
 router.post('/user', function (req, res, next) {
     User.findById(req.session.userId).exec(function (error, user) {
         if (error) {
@@ -134,8 +139,21 @@ router.get('/setChart', function (req, res, next) {
 });
 
 // update chart
-router.post('/updateChart', function (req, res, next) {
-    getMongoObj('temperatureSensor', {topic: 'sensorTest'}, callback, 1);
+router.get('/updateChart', function (req, res, next) {
+    var viewData = req.query.data;
+    getMongoObj('temperatureSensor', viewData.finder, callback, 1);
+    function callback(err, obj) {
+        if (err) {
+            throw err;
+        } else {
+            return res.send(obj);
+        }
+    }
+});
+
+// download data
+router.get('/download', function (req, res, next) {
+    getMongoObj('temperatureSensor', {}, callback, 0);
     function callback(err, obj) {
         if (err) {
             throw err;

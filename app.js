@@ -7,7 +7,6 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var nodemailer = require('nodemailer');
-var logTemperature;
 var alertTemplatePath = path.join(__dirname + '/templateLogReg/alertEmail.html');
 var alertTemplate = fs.readFileSync(alertTemplatePath, {encoding:'utf-8'});
 
@@ -21,7 +20,7 @@ var transporter = nodemailer.createTransport({
 
 var mailOptions = {
     from: 'minhphuong9836@gmail.com',
-    subject: 'Sending Email using Node.js',
+    subject: 'Somethings is wrong with our water quality',
     to: [],
     html: alertTemplate
 };
@@ -76,7 +75,7 @@ app.listen(3000, function () {
     console.log('Express app listening on port 3000');
 });
 
-function sendAlert(dateNow) {
+function sendAlert(dateNow, device) {
     var day = dateNow.getDate();
     var month = dateNow.getMonth() + 1;
     var year = dateNow.getFullYear();
@@ -85,6 +84,7 @@ function sendAlert(dateNow) {
     var second = dateNow.getSeconds();
     var fullDate = year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
     var obj = {
+        deviceId: device,
         date: fullDate
     };
 
@@ -131,8 +131,8 @@ function checkAlert(dateNow, alertDate) {
     }
 }
 
-function alert() {
-    routes.getMongoObj('alert', '', callback, 0);
+function alert(device) {
+    routes.getMongoObj('alert', { deviceId: device }, callback, 0);
     function callback(err, obj) {
         if (err) {
             console.log('error');
@@ -142,7 +142,7 @@ function alert() {
                 if (typeof obj[0] === 'undefined') {
                     var dateNow = new Date();
 
-                    sendAlert(dateNow);
+                    sendAlert(dateNow, device);
                 } else {
                     var dateNow = new Date();
                     var alertDate = new Date(obj[0].date);
@@ -165,11 +165,13 @@ function checkTemperature() {
         if (err) {
             throw err;
         } else {
-            logTemperature = obj[0].temp;
-            console.log('Temperature now: ' + logTemperature + '°C');
+            for (var i = 0; i < obj[0].device.length; i++) {
+                console.log('Device: ' + obj[0].device[i].id);
+                console.log('Temperature: ' + obj[0].device[i].temperature + '°C');
 
-            if (logTemperature > 28 || logTemperature < 25) {
-                alert();
+                if (obj[0].device[i].temperature > 28 || obj[0].device[i].temperature < 25) {
+                    //alert(obj[0].device[i].id);
+                }
             }
         }
     }
