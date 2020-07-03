@@ -1,645 +1,417 @@
-<!doctype html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
-    <meta charset="utf-8">
-    <title>[SUBJECT]</title>
-    <style type="text/css">
-        body {
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
-            margin: 0 !important;
-            width: 100% !important;
-            -webkit-text-size-adjust: 100% !important;
-            -ms-text-size-adjust: 100% !important;
-            -webkit-font-smoothing: antialiased !important;
-        }
+	<!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width">
+	<!--[if !mso]><!-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--<![endif]-->
+	<title></title>
+	<!--[if !mso]><!-->
+	<!--<![endif]-->
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+		}
 
-        .tableContent img {
-            border: 0 !important;
-            display: block !important;
-            outline: none !important;
-        }
+		table,
+		td,
+		tr {
+			vertical-align: top;
+			border-collapse: collapse;
+		}
 
-        ul {
-            margin: 0;
-        }
+		* {
+			line-height: inherit;
+		}
 
-        p {
-            color: #999999;
-            font-size: 13px;
-            line-height: 19px;
-            margin: 0;
-        }
+		a[x-apple-data-detectors=true] {
+			color: inherit !important;
+			text-decoration: none !important;
+		}
+	</style>
+	<style type="text/css" id="media-query">
+		@media (max-width: 670px) {
 
-        h2,
-        h1 {
-            color: #555555;
-            font-size: 21px;
-            font-weight: normal;
-            margin: 0;
-        }
+			.block-grid,
+			.col {
+				min-width: 320px !important;
+				max-width: 100% !important;
+				display: block !important;
+			}
 
-        h2.white {
-            color: #ffffff;
-        }
+			.block-grid {
+				width: 100% !important;
+			}
 
-        a {
-            color: #000000;
-        }
+			.col {
+				width: 100% !important;
+			}
 
-        a.link1 {
-            font-size: 13px;
-            color: #3892E3;
-        }
+			.col>div {
+				margin: 0 auto;
+			}
 
-        a.link2 {
-            padding: 8px;
-            background: #52619E;
-            font-size: 13px;
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-        }
+			img.fullwidth,
+			img.fullwidthOnMobile {
+				max-width: 100% !important;
+			}
 
-        a.link3 {
-            color: #52619E;
-            font-size: 13px;
-            font-weight: bold;
-            text-decoration: none;
-        }
+			.no-stack .col {
+				min-width: 0 !important;
+				display: table-cell !important;
+			}
 
-        .bgBody {
-            background: #F6F6F6;
-        }
+			.no-stack.two-up .col {
+				width: 50% !important;
+			}
 
-        .bgItem {
-            background: #ffffff;
-        }
+			.no-stack .col.num4 {
+				width: 33% !important;
+			}
 
+			.no-stack .col.num8 {
+				width: 66% !important;
+			}
 
-        @media only screen and (max-width:480px) {
+			.no-stack .col.num4 {
+				width: 33% !important;
+			}
 
-            table[class="MainContainer"],
-            td[class="cell"] {
-                width: 100% !important;
-                height: auto !important;
-            }
+			.no-stack .col.num3 {
+				width: 25% !important;
+			}
 
-            td[class="specbundle"] {
-                width: 100% !important;
-                float: left !important;
-                font-size: 14px !important;
-                line-height: 18px !important;
-                display: block !important;
-                padding-bottom: 15px !important;
-            }
+			.no-stack .col.num6 {
+				width: 50% !important;
+			}
 
-            td[class="spechide"] {
-                display: none !important;
-            }
+			.no-stack .col.num9 {
+				width: 75% !important;
+			}
 
-            img[class="banner"] {
-                width: 100% !important;
-                height: auto !important;
-            }
+			.video-block {
+				max-width: none !important;
+			}
 
-        }
+			.mobile_hide {
+				min-height: 0px;
+				max-height: 0px;
+				max-width: 0px;
+				display: none;
+				overflow: hidden;
+				font-size: 0px;
+			}
 
-        @media only screen and (max-width:540px) {
-
-            table[class="MainContainer"],
-            td[class="cell"] {
-                width: 100% !important;
-                height: auto !important;
-            }
-
-            td[class="specbundle"] {
-                width: 100% !important;
-                float: left !important;
-                font-size: 14px !important;
-                line-height: 18px !important;
-                display: block !important;
-                padding-bottom: 15px !important;
-            }
-
-            td[class="spechide"] {
-                display: none !important;
-            }
-
-            img[class="banner"] {
-                width: 100% !important;
-                height: auto !important;
-            }
-
-        }
-    </style>
-    <script type="colorScheme" class="swatch active">
-  {
-    "name":"Default",
-    "bgBody":"efe6bd",
-    "link":"c6e170",
-    "color":"999999",
-    "bgItem":"ffffff",
-    "title":"832e53"
-  }
-</script>
+			.desktop_hide {
+				display: block !important;
+				max-height: none !important;
+			}
+		}
+	</style>
 </head>
 
-<body
-    style="padding-top: 0; padding-bottom: 0; padding-top: 0; padding-bottom: 0; background-repeat: repeat; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-font-smoothing: antialiased;"
-    toppadding="0" bgcolor="#efe6bd">
-    <table align="center" bgcolor="#f6f6f6" border="0" cellpadding="0" cellspacing="0" class="tableContent"
-        width="100%">
-        <tbody>
-            <tr>
-                <td>
-                    <table align="center" bgcolor="#f6f6f6" border="0" cellpadding="0" cellspacing="0"
-                        style="font-family:helvetica, sans-serif;" width="600" class="MainContainer">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tbody>
-                                            <tr>
-                                                <td valign="top" width="20">&nbsp;</td>
-                                                <td valign="top">
-                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-
-                                                        <!--  =========================== The header ===========================  -->
-                                                        <tbody>
-                                                            <tr>
-                                                                <!--  =========================== The body ===========================  -->
-                                                                <td class="movableContentContainer">
-                                                                    <div class="movableContent"
-                                                                        style="border: 0px; padding-top: 0px; position: relative;">
-                                                                        <table border="0" cellpadding="0"
-                                                                            cellspacing="0" width="100%">
-                                                                            <tr>
-                                                                                <td height="25">
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="movableContent"
-                                                                        style="border: 0px; padding-top: 0px; position: relative;">
-                                                                        <table border="0" cellpadding="0"
-                                                                            cellspacing="0" width="100%">
-                                                                            <tr>
-                                                                                <td height="25">
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td align="center" bgcolor="#52619E"
-                                                                                    height="184"
-                                                                                    style="background:url('images/bigImg.png') #52619E no-repeat;background-size:560px 184px;"
-                                                                                    valign="middle" width="560">
-                                                                                    <div
-                                                                                        class="contentEditableContainer contentImageEditable">
-                                                                                        <div class="contentEditable">
-                                                                                            <img class="banner"
-                                                                                                alt="product image"
-                                                                                                data-default="placeholder"
-                                                                                                data-max-width="560"
-                                                                                                height="184"
-                                                                                                src="https://i.ibb.co/5nLBSZB/bigImg.png"
-                                                                                                width="560" /></div>
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="movableContent"
-                                                                        style="border: 0px; padding-top: 0px; position: relative;">
-                                                                        <table border="0" cellpadding="0"
-                                                                            cellspacing="0" width="100%">
-                                                                            <tr>
-                                                                                <td align="right" bgcolor="#2D3867"
-                                                                                    style="padding:20px;">
-                                                                                    <div
-                                                                                        class="contentEditableContainer contentTextEditable">
-                                                                                        <div class="contentEditable">
-                                                                                            <p
-                                                                                                style="color:#ffffff;font-size:16px;line-height:19px;">
-                                                                                                Water Quality - Monitoring System.</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="movableContent"
-                                                                        style="border: 0px; padding-top: 0px; position: relative;">
-                                                                        <table border="0" cellpadding="0"
-                                                                            cellspacing="0" width="100%">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td height="25">
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <table align="center"
-                                                                                            class='bgItem' border="0"
-                                                                                            cellpadding="0"
-                                                                                            cellspacing="0"
-                                                                                            style="border:1px solid #dddddd"
-                                                                                            valign="top" width="100%">
-                                                                                            <tbody>
-                                                                                                <tr>
-                                                                                                    <td colspan="3"
-                                                                                                        height="16">
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                                <tr>
-                                                                                                    <td width="16">
-                                                                                                    </td>
-                                                                                                    <td>
-                                                                                                        <table
-                                                                                                            align="center"
-                                                                                                            class='bgItem'
-                                                                                                            border="0"
-                                                                                                            cellpadding="0"
-                                                                                                            cellspacing="0"
-                                                                                                            valign="top"
-                                                                                                            width="100%">
-                                                                                                            <tbody>
-                                                                                                                <tr>
-                                                                                                                    <td align="left"
-                                                                                                                        valign="top">
-                                                                                                                        <div
-                                                                                                                            class="contentEditableContainer contentTextEditable">
-                                                                                                                            <div
-                                                                                                                                class="contentEditable">
-                                                                                                                                <h2>
-                                                                                                                                    Alert
-                                                                                                                                </h2>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                                <tr>
-                                                                                                                    <td
-                                                                                                                        height="13">
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                                <tr>
-                                                                                                                    <td align="left"
-                                                                                                                        valign="top">
-                                                                                                                        <div
-                                                                                                                            class="contentEditableContainer contentTextEditable">
-                                                                                                                            <div
-                                                                                                                                class="contentEditable">
-                                                                                                                                <p style="color: red;">
-                                                                                                                                    We found an issue about water quality, please check it immediately!
-                                                                                                                                </p>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                                <tr>
-                                                                                                                    <td
-                                                                                                                        height="20">
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                            </tbody>
-                                                                                                        </table>
-                                                                                                    </td>
-                                                                                                    <td width="16">
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                                <tr>
-                                                                                                    <td colspan="3"
-                                                                                                        height="16">
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="movableContent"
-                                                                        style="border: 0px; padding-top: 0px; position: relative;">
-                                                                        <table border="0" cellpadding="0"
-                                                                            cellspacing="0" width="100%">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td height="25">
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="movableContent"
-                                                                        style="border: 0px; padding-top: 0px; position: relative;">
-                                                                        <table border="0" cellpadding="0"
-                                                                            cellspacing="0" width="100%">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td height="25">
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <table align="center" border="0"
-                                                                                            cellpadding="0"
-                                                                                            cellspacing="0" valign="top"
-                                                                                            width="100%">
-                                                                                            <tbody>
-                                                                                                <tr>
-                                                                                                    <td bgcolor="#ffffff"
-                                                                                                        style="border:1px solid #dddddd;"
-                                                                                                        valign="top"
-                                                                                                        width="100%"
-                                                                                                        class="specbundle">
-                                                                                                        <table
-                                                                                                            align="center"
-                                                                                                            border="0"
-                                                                                                            cellpadding="0"
-                                                                                                            cellspacing="0"
-                                                                                                            valign="top"
-                                                                                                            width="100%">
-                                                                                                            <tbody>
-                                                                                                                <tr>
-                                                                                                                    <td colspan="3"
-                                                                                                                        height="15">
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                                <tr>
-                                                                                                                    <td
-                                                                                                                        width="20">
-                                                                                                                    </td>
-                                                                                                                    <td
-                                                                                                                        width="325">
-                                                                                                                        <table
-                                                                                                                            align="center"
-                                                                                                                            border="0"
-                                                                                                                            cellpadding="0"
-                                                                                                                            cellspacing="0"
-                                                                                                                            valign="top"
-                                                                                                                            width="100%">
-                                                                                                                            <tbody>
-                                                                                                                                <tr>
-                                                                                                                                    <td>
-                                                                                                                                        <div
-                                                                                                                                            class="contentEditableContainer contentTextEditable">
-                                                                                                                                            <div
-                                                                                                                                                class="contentEditable">
-                                                                                                                                                <h2>
-                                                                                                                                                    Why
-                                                                                                                                                    you
-                                                                                                                                                    receive
-                                                                                                                                                    this
-                                                                                                                                                    email
-                                                                                                                                                </h2>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td
-                                                                                                                                        height="13">
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td>
-                                                                                                                                        <div
-                                                                                                                                            class="contentEditableContainer contentTextEditable">
-                                                                                                                                            <div
-                                                                                                                                                class="contentEditable">
-                                                                                                                                                <p>
-                                                                                                                                                    This email is auto-alert email, you receive this because you had register your email to our monitoring system!
-                                                                                                                                                </p>
-                                                                                                                                            </div>
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td
-                                                                                                                                        height="16">
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                                <tr>
-                                                                                                                                    <td>
-                                                                                                                                        <div
-                                                                                                                                            class="contentEditableContainer contentTextEditable">
-                                                                                                                                        </div>
-                                                                                                                                    </td>
-                                                                                                                                </tr>
-                                                                                                                            </tbody>
-                                                                                                                        </table>
-                                                                                                                    </td>
-                                                                                                                    <td
-                                                                                                                        width="20">
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                                <tr>
-                                                                                                                    <td colspan="3"
-                                                                                                                        height="15">
-                                                                                                                    </td>
-                                                                                                                </tr>
-                                                                                                            </tbody>
-                                                                                                        </table>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="movableContent"
-                                                                        style="border: 0px; padding-top: 0px; position: relative;">
-                                                                        <table align="center" border="0" cellpadding="0"
-                                                                            cellspacing="0" width="100%">
-                                                                            <tr>
-                                                                                <td height="30">
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td bgcolor="#52619E">
-                                                                                    <table align="center"
-                                                                                        bgcolor="#52619E" border="0"
-                                                                                        cellpadding="0" cellspacing="0"
-                                                                                        width="100%">
-                                                                                        <tbody>
-                                                                                            <tr>
-                                                                                                <td align="left"
-                                                                                                    bgcolor="#52619E"
-                                                                                                    valign="top"
-                                                                                                    width="416">
-                                                                                                    <table
-                                                                                                        align="center"
-                                                                                                        bgcolor="#52619E"
-                                                                                                        border="0"
-                                                                                                        cellpadding="0"
-                                                                                                        cellspacing="0"
-                                                                                                        width="100%">
-                                                                                                        <tbody>
-                                                                                                            <tr>
-                                                                                                                <td colspan="3"
-                                                                                                                    height="28">
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td
-                                                                                                                    width="30">
-                                                                                                                </td>
-                                                                                                                <td
-                                                                                                                    valign="middle">
-                                                                                                                    <div
-                                                                                                                        class="contentEditableContainer contentTextEditable">
-                                                                                                                        <div
-                                                                                                                            class="contentEditable">
-                                                                                                                            <p
-                                                                                                                                style="color:#ffffff;font-size:14px;line-height:19px;">
-                                                                                                                                Stay
-                                                                                                                                in
-                                                                                                                                Touch!
-                                                                                                                            </p>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </td>
-                                                                                                                <td
-                                                                                                                    width="10">
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                            <tr>
-                                                                                                                <td colspan="3"
-                                                                                                                    height="28">
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                        </tbody>
-                                                                                                    </table>
-                                                                                                </td>
-                                                                                                <td align="center"
-                                                                                                    bgcolor="#3E4A7F"
-                                                                                                    valign="top"
-                                                                                                    width="72">
-                                                                                                    <table
-                                                                                                        align="center"
-                                                                                                        bgcolor="#3E4A7F"
-                                                                                                        border="0"
-                                                                                                        cellpadding="0"
-                                                                                                        cellspacing="0"
-                                                                                                        width="100%">
-                                                                                                        <tbody>
-                                                                                                            <tr>
-                                                                                                                <td align="center"
-                                                                                                                    bgcolor="#3E4A7F"
-                                                                                                                    height="72"
-                                                                                                                    valign="middle"
-                                                                                                                    width="100%">
-                                                                                                                    <div
-                                                                                                                        class="contentEditableContainer contentFacebookEditable">
-                                                                                                                        <div class="contentEditable"
-                                                                                                                            valign="middle">
-                                                                                                                            <a target='_blank'
-                                                                                                                                href="https://www.facebook.com/leminh.phuong.1428"><img
-                                                                                                                                    alt="facebook link"
-                                                                                                                                    data-default="placeholder"
-                                                                                                                                    data-max-width="37"
-                                                                                                                                    height="37"
-                                                                                                                                    src="https://i.ibb.co/3zmq105/facebook.png"
-                                                                                                                                    width="37"
-                                                                                                                                    data-customIcon="true" /></a>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                        </tbody>
-                                                                                                    </table>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                        </tbody>
-                                                                                    </table>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="movableContent"
-                                                                        style="border: 0px; padding-top: 0px; position: relative;">
-                                                                        <table align="center" border="0" cellpadding="0"
-                                                                            cellspacing="0" width="100%">
-                                                                            <tr>
-                                                                                <td height="28">
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td align="center" valign="top">
-                                                                                    <div
-                                                                                        class="contentEditableContainer contentTextEditable">
-                                                                                        <div class="contentEditable">
-                                                                                            <p
-                                                                                                style="color:#A8B0B6; font-size:13px;line-height: 16px;">
-                                                                                                This is auto-alert email, please do not reply!</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    </div>
-                                                                    <div class="movableContent"
-                                                                        style="border: 0px; padding-top: 0px; position: relative;">
-                                                                        <table align="center" border="0" cellpadding="0"
-                                                                            cellspacing="0" width="100%">
-                                                                            <tr>
-                                                                                <td height="28">
-                                                                                </td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td align="center" valign="top">
-                                                                                    <div
-                                                                                        class="contentEditableContainer contentTextEditable">
-                                                                                        <div class="contentEditable">
-                                                                                            <p
-                                                                                                style="color:#A8B0B6; font-weight:bold;font-size:13px;line-height: 30px;">
-                                                                                                <span>&copy;2020 Phuong Le - Luan Dang</span>
-                                                                                            </p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </div>
-                                                                    <div class="movableContent"
-                                                                        style="border: 0px; padding-top: 0px; position: relative;">
-                                                                        <table width="100%" border="0" cellspacing="0"
-                                                                            cellpadding="0">
-                                                                            <tbody>
-
-                                                                                <tr>
-                                                                                    <td height="28"></td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-
-                                                                    </div>
-
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                                <td valign="top" width="20">&nbsp;</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+<body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #F5F5F5;">
+	<!--[if IE]><div class="ie-browser"><![endif]-->
+	<table class="nl-container" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 0 auto; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #F5F5F5; width: 100%;" cellpadding="0" cellspacing="0" role="presentation" width="100%" bgcolor="#F5F5F5" valign="top">
+		<tbody>
+			<tr style="vertical-align: top;" valign="top">
+				<td style="word-break: break-word; vertical-align: top;" valign="top">
+					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color:#F5F5F5"><![endif]-->
+					<div style="background-image:url('https://d1oco4z2z1fhwp.cloudfront.net/templates/default/671/bg_top.jpg');background-position:top center;background-repeat:repeat;background-color:transparent;">
+						<div class="block-grid " style="Margin: 0 auto; min-width: 320px; max-width: 650px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
+							<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+								<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-image:url('https://d1oco4z2z1fhwp.cloudfront.net/templates/default/671/bg_top.jpg');background-position:top center;background-repeat:repeat;background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:650px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align="center" width="650" style="background-color:transparent;width:650px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+								<div class="col num12" style="min-width: 320px; max-width: 650px; display: table-cell; vertical-align: top; width: 650px;">
+									<div style="width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+											<!--<![endif]-->
+											<table class="divider" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" role="presentation" valign="top">
+												<tbody>
+													<tr style="vertical-align: top;" valign="top">
+														<td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign="top">
+															<table class="divider_content" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-top: 0px solid transparent; height: 31px; width: 100%;" align="center" role="presentation" height="31" valign="top">
+																<tbody>
+																	<tr style="vertical-align: top;" valign="top">
+																		<td style="word-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" height="31" valign="top"><span></span></td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+							</div>
+						</div>
+					</div>
+					<div style="background-color:transparent;">
+						<div class="block-grid " style="Margin: 0 auto; min-width: 320px; max-width: 650px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
+							<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+								<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:650px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align="center" width="650" style="background-color:transparent;width:650px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 15px; padding-left: 15px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+								<div class="col num12" style="min-width: 320px; max-width: 650px; display: table-cell; vertical-align: top; width: 650px;">
+									<div style="width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 15px; padding-left: 15px;">
+											<!--<![endif]-->
+											<div class="img-container left fixedwidth" align="left" style="padding-right: 15px;padding-left: 10px;">
+												<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 15px;padding-left: 10px;" align="left"><![endif]--><img class="left fixedwidth" border="0" src="https://d1oco4z2z1fhwp.cloudfront.net/templates/default/671/logosh.gif" alt="Water Monitoring Logo" title="Water Monitoring Logo" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 130px; display: block;" width="130">
+												<!--[if mso]></td></tr></table><![endif]-->
+											</div>
+											<table class="divider" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" role="presentation" valign="top">
+												<tbody>
+													<tr style="vertical-align: top;" valign="top">
+														<td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign="top">
+															<table class="divider_content" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-top: 0px solid transparent; height: 10px; width: 100%;" align="center" role="presentation" height="10" valign="top">
+																<tbody>
+																	<tr style="vertical-align: top;" valign="top">
+																		<td style="word-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" height="10" valign="top"><span></span></td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 0px; padding-bottom: 10px; font-family: Tahoma, Verdana, sans-serif"><![endif]-->
+											<div style="color:#1a6eff;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:0px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<div style="font-family: Tahoma, Verdana, Segoe, sans-serif; line-height: 1.2; font-size: 12px; color: #1a6eff; mso-line-height-alt: 14px;">
+													<p style="line-height: 1.2; font-size: 42px; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 50px; margin: 0;"><span style="font-size: 42px;"><strong><span style="font-size: 42px;">Hello User,</span></strong></span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 0px; padding-bottom: 30px; font-family: Tahoma, Verdana, sans-serif"><![endif]-->
+											<div style="color:#555555;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:0px;padding-right:10px;padding-bottom:30px;padding-left:10px;">
+												<div style="font-family: Tahoma, Verdana, Segoe, sans-serif; font-size: 12px; line-height: 1.2; color: #555555; mso-line-height-alt: 14px;">
+													<p style="font-size: 22px; line-height: 1.2; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 26px; margin: 0;"><span style="font-size: 22px;">Hey you, should you check the water monitoring? We saw the temperature is not in the right condition, please check it!</span></p>
+													<p style="font-size: 22px; line-height: 1.2; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 26px; margin: 0;"><span style="font-size: 22px;">This email is auto-send by our system, please do not reply!</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+							</div>
+						</div>
+					</div>
+					<div style="background-color:transparent;">
+						<div class="block-grid mixed-two-up no-stack" style="Margin: 0 auto; min-width: 320px; max-width: 650px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #E4E9ED;">
+							<div style="border-collapse: collapse;display: table;width: 100%;background-color:#E4E9ED;">
+								<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:650px"><tr class="layout-full-width" style="background-color:#E4E9ED"><![endif]-->
+								<!--[if (mso)|(IE)]><td align="center" width="162" style="background-color:#E4E9ED;width:162px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-->
+								<div class="col num3" style="display: table-cell; vertical-align: top; max-width: 320px; min-width: 162px; width: 162px;">
+									<div style="width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
+											<!--<![endif]-->
+											<div class="img-container center fixedwidth" align="center" style="padding-right: 0px;padding-left: 0px;">
+												<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><img class="center fixedwidth" align="center" border="0" src="https://i.ibb.co/z2HRWnQ/luan.jpg" alt="Team Co-Founder" title="Team Co-Founder" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 122px; display: block;" width="122">
+												<!--[if mso]></td></tr></table><![endif]-->
+											</div>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td><td align="center" width="487" style="background-color:#E4E9ED;width:487px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-->
+								<div class="col num9" style="display: table-cell; vertical-align: top; min-width: 320px; max-width: 486px; width: 487px;">
+									<div style="width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
+											<!--<![endif]-->
+											<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 20px; padding-bottom: 25px; font-family: Tahoma, Verdana, sans-serif"><![endif]-->
+											<div style="color:#625050;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.5;padding-top:20px;padding-right:10px;padding-bottom:25px;padding-left:10px;">
+												<div style="font-family: Tahoma, Verdana, Segoe, sans-serif; font-size: 12px; line-height: 1.5; color: #625050; mso-line-height-alt: 18px;">
+													<p style="font-size: 14px; line-height: 1.5; text-align: left; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 21px; margin: 0;"><span style="color: #1a6eff; font-size: 14px;"><strong><span style="font-size: 22px;">Thank you for your help!</span></strong></span></p>
+													<p style="font-size: 18px; line-height: 1.5; text-align: left; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 27px; margin: 0;"><span style="font-size: 18px;">Luan Dang, Team Co-Founder</span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+							</div>
+						</div>
+					</div>
+					<div style="background-color:transparent;">
+						<div class="block-grid " style="Margin: 0 auto; min-width: 320px; max-width: 650px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
+							<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+								<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:650px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align="center" width="650" style="background-color:transparent;width:650px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+								<div class="col num12" style="min-width: 320px; max-width: 650px; display: table-cell; vertical-align: top; width: 650px;">
+									<div style="width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+											<!--<![endif]-->
+											<table class="divider" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" role="presentation" valign="top">
+												<tbody>
+													<tr style="vertical-align: top;" valign="top">
+														<td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign="top">
+															<table class="divider_content" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-top: 0px solid transparent; height: 40px; width: 100%;" align="center" role="presentation" height="40" valign="top">
+																<tbody>
+																	<tr style="vertical-align: top;" valign="top">
+																		<td style="word-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" height="40" valign="top"><span></span></td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+							</div>
+						</div>
+					</div>
+					<div style="background-image:url('https://d1oco4z2z1fhwp.cloudfront.net/templates/default/671/bg_bottom.jpg');background-position:top center;background-repeat:repeat;background-color:transparent;">
+						<div class="block-grid " style="Margin: 0 auto; min-width: 320px; max-width: 650px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
+							<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+								<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-image:url('https://d1oco4z2z1fhwp.cloudfront.net/templates/default/671/bg_bottom.jpg');background-position:top center;background-repeat:repeat;background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:650px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align="center" width="650" style="background-color:transparent;width:650px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+								<div class="col num12" style="min-width: 320px; max-width: 650px; display: table-cell; vertical-align: top; width: 650px;">
+									<div style="width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+											<!--<![endif]-->
+											<table class="divider" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" role="presentation" valign="top">
+												<tbody>
+													<tr style="vertical-align: top;" valign="top">
+														<td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign="top">
+															<table class="divider_content" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-top: 0px solid transparent; height: 145px; width: 100%;" align="center" role="presentation" height="145" valign="top">
+																<tbody>
+																	<tr style="vertical-align: top;" valign="top">
+																		<td style="word-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" height="145" valign="top"><span></span></td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+							</div>
+						</div>
+					</div>
+					<div style="background-color:#4D8EFD;">
+						<div class="block-grid two-up no-stack" style="Margin: 0 auto; min-width: 320px; max-width: 650px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
+							<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+								<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#4D8EFD;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:650px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align="center" width="325" style="background-color:transparent;width:325px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+								<div class="col num6" style="min-width: 320px; max-width: 325px; display: table-cell; vertical-align: top; width: 325px;">
+									<div style="width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+											<!--<![endif]-->
+											<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, Verdana, sans-serif"><![endif]-->
+											<div style="color:#FFFFFF;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<div style="font-family: Tahoma, Verdana, Segoe, sans-serif; line-height: 1.2; font-size: 12px; color: #FFFFFF; mso-line-height-alt: 14px;">
+													<p style="line-height: 1.2; font-size: 30px; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: 36px; margin: 0;"><span style="font-size: 30px;"><strong><span style="font-size: 30px;">Stay in touch!</span></strong></span></p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td><td align="center" width="325" style="background-color:transparent;width:325px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+								<div class="col num6" style="min-width: 320px; max-width: 325px; display: table-cell; vertical-align: top; width: 325px;">
+									<div style="width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
+											<!--<![endif]-->
+											<table class="social_icons" cellpadding="0" cellspacing="0" width="100%" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" valign="top">
+												<tbody>
+													<tr style="vertical-align: top;" valign="top">
+														<td style="word-break: break-word; vertical-align: top; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" valign="top">
+															<table class="social_table" align="center" cellpadding="0" cellspacing="0" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-tspace: 0; mso-table-rspace: 0; mso-table-bspace: 0; mso-table-lspace: 0;" valign="top">
+																<tbody>
+																	<tr style="vertical-align: top; display: inline-block; text-align: center;" align="center" valign="top">
+																		<td style="word-break: break-word; vertical-align: top; padding-bottom: 5px; padding-right: 8px; padding-left: 8px;" valign="top"><a href="https://www.facebook.com/leminh.phuong.1428" target="_blank"><img width="32" height="32" src="https://d2fi4ri5dhpqd1.cloudfront.net/public/resources/social-networks-icon-sets/t-outline-circle-white/facebook@2x.png" alt="Facebook" title="Facebook" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"></a></td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+							</div>
+						</div>
+					</div>
+					<div style="background-color:#2575FF;">
+						<div class="block-grid " style="Margin: 0 auto; min-width: 320px; max-width: 650px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
+							<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+								<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#2575FF;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:650px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+								<!--[if (mso)|(IE)]><td align="center" width="650" style="background-color:transparent;width:650px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:30px; padding-bottom:30px;"><![endif]-->
+								<div class="col num12" style="min-width: 320px; max-width: 650px; display: table-cell; vertical-align: top; width: 650px;">
+									<div style="width:100% !important;">
+										<!--[if (!mso)&(!IE)]><!-->
+										<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:30px; padding-bottom:30px; padding-right: 0px; padding-left: 0px;">
+											<!--<![endif]-->
+											<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, Verdana, sans-serif"><![endif]-->
+											<div style="color:#FFFFFF;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
+												<div style="font-family: Tahoma, Verdana, Segoe, sans-serif; font-size: 12px; line-height: 1.2; color: #FFFFFF; mso-line-height-alt: 14px;">
+													<p style="font-size: 14px; line-height: 1.2; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 17px; margin: 0;"><em>Realtime-checking with our water monitoring system.</em></p>
+													<p style="font-size: 14px; line-height: 1.2; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 17px; margin: 0;">Phuong Le - Luan Dang 2020 © all rights reserved</p>
+												</div>
+											</div>
+											<!--[if mso]></td></tr></table><![endif]-->
+											<!--[if (!mso)&(!IE)]><!-->
+										</div>
+										<!--<![endif]-->
+									</div>
+								</div>
+								<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+								<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+							</div>
+						</div>
+					</div>
+					<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--[if (IE)]></div><![endif]-->
 </body>
 
 </html>
