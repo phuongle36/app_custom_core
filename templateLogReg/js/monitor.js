@@ -8,7 +8,7 @@ $(document).ready(function () {
         var dateNow = new Date();
         var temperature = $('.sensor-temperature');
         var tempAlert = $('.temperature-alert');
-        var tempValue = [temperature[0].innerText.split('°'), temperature[1].innerText.split('°')];
+        var tempValue = [temperature[0].innerText.split('°'), temperature[1].innerText.split('°'), temperature[2].innerText];
         var dataDate = $('.sensor-date');
         var sensorActive = $('.sensor-active');
         var sensorInactive = $('.sensor-inactive');
@@ -17,27 +17,56 @@ $(document).ready(function () {
             if (data) {
                 var sensorDate = new Date(data[0].date);
                 temperature.css('opacity', '0');
-                temperature.delay(500).animate({ opacity: 1}, 300);
-                tempAlert.delay(1000).animate({ opacity: 1}, 500);
+                temperature.delay(500).animate({ opacity: 1 }, 300);
+                tempAlert.delay(1000).animate({ opacity: 1 }, 500);
+                
+                for (var a = 0; a < data.length; a++) {
+                    if (data[a].device[0].type === 'temperature') {
+                        for (var b = 0; b < data[a].device.length; b++) {
+                            temperature[b].innerText = data[a].device[b].value + '°C' + '  ';
 
-                for (var i = 0; i < data[0].device.length; i++) {
-                    temperature[i].innerText = data[0].device[i].temperature + '°C' + '  ';
+                            if (data[a].device[b].value > tempValue[b][0]) {
+                                $(temperature[b]).append('&nbsp<i class="fas fa-arrow-up" style="font-size:24px;color:#f55d5d;"></i>');
+                            } else if (data[a].device[b].value < tempValue[b][0]) {
+                                $(temperature[b]).append('&nbsp<i class="fas fa-arrow-down" style="font-size:24px;color:#094f8d;"></i>');
+                            } else { }
 
-                    if (data[0].device[i].temperature > tempValue[i][0]) {
-                        $(temperature[i]).append('<i class="fas fa-arrow-up" style="font-size:24px;color:#f55d5d;"></i>');
-                    } else if (data[0].device[i].temperature < tempValue[i][0]) {
-                        $(temperature[i]).append('<i class="fas fa-arrow-down" style="font-size:24px;color:#094f8d;"></i>');
-                    } else {}
+                            if (data[a].device[b].value < 25) {
+                                tempAlert[b].style.color = '#094f8d';
+                                tempAlert[b].innerText = 'Too Cold';
+                            } else if (data[a].device[b].value > 28) {
+                                tempAlert[b].style.color = '#f55d5d';
+                                tempAlert[b].innerText = 'Too Hot';
+                            } else {
+                                tempAlert[b].style.color = '#01a897';
+                                tempAlert[b].innerText = 'The temperature is perfect';
+                            }
+                        }
+                        break;
+                    }
+                }
+                
+                for (var a = 0; a < data.length; a++) {
+                    if (data[a].device[0].type === 'ph') {
+                        temperature[2].innerText = data[a].device[0].value;
 
-                    if (data[0].device[i].temperature < 25) {
-                        tempAlert.css('color', '#094f8d');
-                        tempAlert[i].innerText = 'Too Cold';
-                    } else if (data[0].device[i].temperature > 28) {
-                        tempAlert.css('color', '#f55d5d');
-                        tempAlert[i].innerText = 'Too Hot';
-                    } else {
-                        tempAlert.css('color', '#01a897');
-                        tempAlert[i].innerText = 'The temperature is perfect';
+                        if (data[a].device[0].value < tempValue[2]) {
+                            $(temperature[2]).append('&nbsp<i class="fas fa-arrow-up" style="font-size:24px;color:#f55d5d;"></i>');
+                        } else if (data[a].device[0].value < tempValue[2]) {
+                            $(temperature[2]).append('&nbsp<i class="fas fa-arrow-down" style="font-size:24px;color:#094f8d;"></i>');
+                        } else { }
+
+                        if (data[a].device[0].value < 6) {
+                            tempAlert[2].style.color = '#094f8d';
+                            tempAlert[2].innerText = 'pH is too low';
+                        } else if (data[a].device[0].value > 8.5) {
+                            tempAlert[2].style.color = '#f55d5d';
+                            tempAlert[2].innerText = 'pH is too high';
+                        } else {
+                            tempAlert[2].style.color = '#01a897';
+                            tempAlert[2].innerText = 'pH is perfect';
+                        }
+                        break;
                     }
                 }
 

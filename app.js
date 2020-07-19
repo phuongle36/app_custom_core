@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var nodemailer = require('nodemailer');
+var handlebars = require('handlebars');
 var alertTemplatePath = path.join(__dirname + '/templateLogReg/alertEmail.html');
 var alertTemplate = fs.readFileSync(alertTemplatePath, {encoding:'utf-8'});
 
@@ -75,7 +76,7 @@ app.listen(3000, function () {
     console.log('Express app listening on port 3000');
 });
 
-function sendAlert(dateNow, device) {
+function sendAlert(dateNow, device, num) {
     var day = dateNow.getDate();
     var month = dateNow.getMonth() + 1;
     var year = dateNow.getFullYear();
@@ -83,10 +84,30 @@ function sendAlert(dateNow, device) {
     var minute = dateNow.getMinutes();
     var second = dateNow.getSeconds();
     var fullDate = year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
+    var check = fullDate.split(' ');
+    var checkDate = check[0].split('/');
+    var checkTime = check[1].split(':');
+
+    for (var a = 0; a < checkDate.length; a++) {
+        if (checkDate[a].toString().length == 1) {
+            checkDate[a] = '0' + checkDate[a];
+        }
+    }
+
+    for (var a = 0; a < checkTime.length; a++) {
+        if (checkTime[a].toString().length == 1) {
+            checkTime[a] = '0' + checkTime[a];
+        }
+    }
+
+    fullDate = checkDate[0] + '/' + checkDate[1] + '/' + checkDate[2] + ' ' +
+    checkTime[0] + ':' + checkTime[1] + ':' + checkTime[2];
     var obj = {
         deviceId: device,
         date: fullDate
     };
+    
+    console.log(obj);
 
     routes.insertMongoObj('alert', obj);
 
@@ -101,38 +122,66 @@ function sendAlert(dateNow, device) {
                 var email = obj[i].email;
                 mailOptions.to.push(email);
             }
+            
+            fs.readFile(__dirname + '/templateLogReg/alertEmail.html', {encoding: 'utf-8'}, function (err, html) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    var template = handlebars.compile(html);
+                    var replace = {
+                        mess: ''
+                    };
+                    
+                    if (device == 0 || device == 1) {
+                        if (num > 28) {
+                            replace.mess = 'Should you check the water monitoring? We can see the sensor ' + (parseInt(device) + 1) + '\'s temperature is too high from our system, please check it!';
+                        } else {
+                            replace.mess = 'Should you check the water monitoring? We can see the sensor ' + (parseInt(device) + 1) + '\'s temperature is too low from our system, please check it!';
+                        }
+                    } else {
+                        if (num > 8) {
+                            replace.mess = 'Should you check the water monitoring? We can see the sensor ' + (parseInt(device) + 1) + '\'s pH is too high from our system, please check it!';
+                        } else {
+                            replace.mess = 'Should you check the water monitoring? We can see the sensor ' + (parseInt(device) + 1) + '\'s pH is too low from our system, please check it!';
+                        }
+                    }
+
+                    var htmlToSend = template(replace);
+                    mailOptions.html = htmlToSend;
+
+                    transporter.sendMail(mailOptions, function (error, info) {
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            console.log('Email sent: ' + info.response);
+                        }
+                    });
+                }
+            });
         }
     }
-
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
 }
 
-function checkAlert(dateNow, alertDate) {
+function checkAlert(dateNow, alertDate, device, num) {
     if (dateNow.getFullYear() > alertDate.getFullYear()) {
-        sendAlert(dateNow);
+        sendAlert(dateNow, device, num);
     } else if (dateNow.getFullYear() === alertDate.getFullYear()) {
-        if (dateNow.getMonth() > alertDate.getMonth()) {
-            sendAlert(dateNow);
-        } else if (dateNow.getMonth() === alertDate.getMonth()) {
-            if (dateNow.getDate() > alertDate.getDate()) {
-                sendAlert(dateNow);
-            } else if (dateNow.getDate() === alertDate.getDate()) {
-                if (dateNow.getHours() > alertDate.getHours() + 5) {
-                    sendAlert(dateNow);
+        if (parseInt(dateNow.getMonth()) > parseInt(alertDate.getMonth())) {
+            sendAlert(dateNow, device, num);
+        } else if (parseInt(dateNow.getMonth()) === parseInt(alertDate.getMonth())) {
+            if (parseInt(dateNow.getDate()) > parseInt(alertDate.getDate())) {
+                sendAlert(dateNow, device, num);
+            } else if (parseInt(dateNow.getDate()) === parseInt(alertDate.getDate())) {
+                if (parseInt(dateNow.getHours()) > parseInt(alertDate.getHours())) {
+                    sendAlert(dateNow, device, num);
                 }
             }
         }
     }
 }
 
-function alert(device) {
-    routes.getMongoObj('alert', { deviceId: device }, callback, 0);
+function alert(device, num) {
+    routes.getMongoObj('alert', { deviceId: device }, callback, 0, {date:-1});
     function callback(err, obj) {
         if (err) {
             console.log('error');
@@ -142,35 +191,68 @@ function alert(device) {
                 if (typeof obj[0] === 'undefined') {
                     var dateNow = new Date();
 
-                    sendAlert(dateNow, device);
+                    sendAlert(dateNow, device, num);
                 } else {
                     var dateNow = new Date();
                     var alertDate = new Date(obj[0].date);
 
-                    checkAlert(dateNow, alertDate);
+                    checkAlert(dateNow, alertDate, device, num);
                 }
             } else {
                 var dateNow = new Date();
                 var alertDate = new Date(obj[0].date);
 
-                checkAlert(dateNow, alertDate);
+                checkAlert(dateNow, alertDate, device, num);
             }
         }
     }
 }
 
 function checkTemperature() {
-    routes.getMongoObj('temperatureSensor', { topic: 'sensorTest' }, callback, 1);
-    function callback(err, obj) {
+    routes.getMongoObj('temperatureSensor', { topic: 'sensorTest'}, callbackA, 0, {date:-1});
+    routes.getMongoObj('temperatureSensor', { topic: 'sensorTest'}, callbackB, 0, {date:-1});
+    function callbackA(err, obj) {
         if (err) {
             throw err;
         } else {
-            for (var i = 0; i < obj[0].device.length; i++) {
-                console.log('Device: ' + obj[0].device[i].id);
-                console.log('Temperature: ' + obj[0].device[i].temperature + '°C');
+            for (var a = 0; a < obj.length; a++) {
+                if (typeof obj[a].device[0] === 'undefined') { }
+                else {
+                    if (obj[a].device[0].type === 'temperature') {
+                        for (var i = 0; i < obj[a].device.length; i++) {
+                            console.log('Device: ' + (parseInt(obj[a].device[i].id) + 1));
+                            console.log('Type: ' + obj[a].device[i].type);
+                            console.log('Temperature: ' + obj[a].device[i].value + '°C');
+                            console.log('');
 
-                if (obj[0].device[i].temperature > 28 || obj[0].device[i].temperature < 25) {
-                    //alert(obj[0].device[i].id);
+                            if (obj[a].device[i].value > 28 || obj[a].device[i].value < 25) {
+                                alert(obj[a].device[i].id, obj[a].device[i].value);
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    function callbackB(err, obj) {
+        if (err) {
+            throw err;
+        } else {
+            for (var a = 0; a < obj.length; a++) {
+                if (typeof obj[a].device[0] === 'undefined') { }
+                else {
+                    if (obj[a].device[0].type === 'ph') {
+                        console.log('Device: ' + (parseInt(obj[a].device[0].id) + 1));
+                        console.log('Type: ' + obj[a].device[0].type);
+                        console.log('Temperature: ' + obj[a].device[0].value);
+                        console.log('');
+
+                        if (obj[a].device[0].value > 8 || obj[a].device[0].value < 6.5) {
+                            alert(obj[a].device[0].id);
+                        }
+                        break;
+                    }
                 }
             }
         }

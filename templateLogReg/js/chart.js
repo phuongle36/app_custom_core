@@ -24,32 +24,12 @@ var options = {
     data: {
         labels: chartLabel,
         datasets: [{
-            label: "Temperature ",
+            label: '',
             lineTension: 0.3,
             pointRadius: 0,
-            backgroundColor: "rgba(255, 255, 255, 0)",
-            borderColor: "rgba(0, 136, 39, 1)",
-            data: chartData,
-        },
-        {
-            label: "Low Limit ",
-            lineTension: 0.3,
-            pointRadius: 0,
-            backgroundColor: "rgba(50, 66, 92, 0.2)",
+            backgroundColor: "rgba(78, 115, 223, 0.05)",
             borderColor: "rgba(78, 115, 223, 1)",
-            fill: 'start',
-            showLine: true,
-            data: [],
-        },
-        {
-            label: "High Limit ",
-            lineTension: 0.3,
-            pointRadius: 0,
-            backgroundColor: "rgba(50, 66, 92, 0.2)",
-            borderColor: "rgba(204, 0, 0, 1)",
-            fill: 'end',
-            showLine: true,
-            data: [],
+            data: chartData,
         }],
     },
     options: {
@@ -78,7 +58,13 @@ var options = {
                     padding: 10,
                     // Include a dollar sign in the ticks
                     callback: function (value) {
-                        return number_format(value) + '°C';
+                        if ($('.chart-temp-1').hasClass('active')) {
+                            return number_format(value) + '°C';
+                        } else if ($('.chart-temp-2').hasClass('active')) {
+                            return number_format(value) + '°C';
+                        } else {
+                            return number_format(value);
+                        }
                     }
                 },
                 gridLines: {
@@ -111,39 +97,28 @@ var options = {
     }
 }
 
-$('#downloadData').hide();
+$('#downloadDataT').hide();
+$('#downloadDataP').hide();
+$('.about-ph').hide();
 
-function tempLogHandler(dateLog, temperatureLog, chartLabel, chartData) {
-    if (typeof chartData[chartData.length - 1] === 'undefined' && $('.chart-td-log').hasClass('active')) {
-        dateLog.text('No data to display');
-        alertLog.text('Something gone wrong, our technical team is working to resolve this problem, please come back later!');
-        temperatureLog.hide();
-        return;
+function addZero (number) {
+    if (number.toString().length === 1) {
+        number = '0' + number;
     }
-
-    dateLog.css('opacity', '0');
-    dateLog.delay(500).animate({ opacity: 1}, 300);
-    dateLog.text(chartLabel[chartLabel.length - 1]);
-    temperatureLog.css('opacity', '0');
-    temperatureLog.delay(500).animate({ opacity: 1}, 300);
-    temperatureLog.text(chartData[chartData.length - 1] + '°C');
-
-    if (temperatureLog.text().split('°')[0] > 28) {
-        alertLog.text('At this time, the temperature is too high for the aquarium, please adjust this!');
-    } else if (temperatureLog.text().split('°')[0] < 25) {
-        alertLog.text('At this time, the temperature is too low for the aquarium, please adjust this!');
-    } else {
-        alertLog.text('The temperature is perfect, no issue for your aquarium now!');
-    }
+    
+    return number;
 }
 
 function createFinder (day, month, year, count) {
     if (day) {
-        var temp = parseInt(year) + '/' + parseInt(month) + '/' + parseInt(day);
+        day = addZero(day);
+        month = addZero(month);
+        var temp = year + '/' + month + '/' + day;
     } else if (!day) {
-        var temp = parseInt(year) + '/' + parseInt(month);
+        month = addZero(month);
+        var temp = year + '/' + month;
     } else if (!day && !month) {
-        var temp = parseInt(year);
+        var temp = year;
     }
 
     return {
@@ -164,26 +139,36 @@ function setChart (chartFinder) {
         if (data) {
             chartLabel = [];
             chartData = [];
-            options.data.datasets[1].data = [];
-            options.data.datasets[2].data = [];
-
-            for (var i = 0; i < data.length; i++) {
-                if (data.length === 12) {
-                    var splitDate = data[i].date.split(' ');
-                    splitDate = splitDate[1].split(':');
-                    splitDate = splitDate[0] + ':' + splitDate[1];
-                } else {
-                    var splitDate = data[i].date;
+            var num = 0;
+            
+            if ($('.chart-temp-1').hasClass('active') || $('.chart-temp-2').hasClass('active')) {
+                for (var i = 0; i < data.length; i++) {
+                    if (typeof data[i].device[0] == 'undefined') { }
+                    else {
+                        if (data[i].device[0].type === 'temperature') {
+                            var splitDate = data[i].date;
+                            chartLabel.push(splitDate);
+                            if ($('.chart-temp-1').hasClass('active')) {
+                                chartData.push(data[i].device[0].value);
+                            } else {
+                                chartData.push(data[i].device[1].value);
+                            }
+                            num++;
+                        }
+                    }
                 }
+            } else {
+                for (var i = 0; i < data.length; i++) {
+                    if (typeof data[i].device[0] == 'undefined') { }
+                    else {
+                        if (data[i].device[0].type === 'ph') {
+                            var splitDate = data[i].date;
 
-                chartLabel.push(splitDate);
-                options.data.datasets[1].data.push(25);
-                options.data.datasets[2].data.push(28);
-
-                if ($('.chart-temp-1').hasClass('active')) {
-                    chartData.push(data[i].device[0].temperature);
-                } else {
-                    chartData.push(data[i].device[1].temperature);
+                            chartLabel.push(splitDate);
+                            chartData.push(data[i].device[0].value);
+                            num++;
+                        }
+                    }
                 }
             }
 
@@ -192,46 +177,15 @@ function setChart (chartFinder) {
 
             options.data.labels = chartLabel;
             options.data.datasets[0].data = chartData;
-
-            if (data.length === 12) {
-                options.options.scales.xAxes[0].display = true;
+            options.options.scales.xAxes[0].display = false;
+            
+            if ($('.chart-temp-1').hasClass('active') || $('.chart-temp-2').hasClass('active')) {
+                options.data.datasets[0].label = 'Temperature';
             } else {
-                options.options.scales.xAxes[0].display = false;
+                options.data.datasets[0].label = 'pH';
             }
 
             myLineChart = new Chart(ctx, options);
-
-            tempLogHandler(dateLog, temperatureLog, chartLabel, chartData);
-        }
-    });
-}
-
-function updateDataChart (chartFinder) {
-    $.get('/updateChart', chartFinder).done(function (data) {
-        if (data) {
-            if (typeof data[0] === 'undefined') {
-                return;
-            }
-
-            var splitDate = data[0].date.split(' ');
-            splitDate = splitDate[1].split(':');
-            splitDate = splitDate[0] + ':' + splitDate[1];
-
-            if (chartLabel[chartLabel.length - 1] !== splitDate) {
-                chartLabel.shift();
-                chartData.shift();
-                chartLabel.push(splitDate);
-
-                if ($('.chart-temp-1').hasClass('active')) {
-                    chartData.push(data[0].device[0].temperature);
-                } else {
-                    chartData.push(data[0].device[1].temperature);
-                }
-
-                myLineChart = new Chart(ctx, options);
-
-                tempLogHandler(dateLog, temperatureLog, chartLabel, chartData);
-            }
         }
     });
 }
@@ -246,19 +200,98 @@ function defaultHandler () {
     var myInterval;
 
     if (todayLog.hasClass('active')) {
-        chartFinder = createFinder(today.getDate(), today.getMonth() + 1, today.getFullYear(), 12);
-        myInterval = setInterval(updateDataChart(chartFinder), 5000);
+        chartFinder = createFinder(today.getDate(), today.getMonth() + 1, today.getFullYear(), 0);
     } else if (yesterdayLog.hasClass('active')) {
         chartFinder = createFinder(today.getDate() - 1, today.getMonth() + 1, today.getFullYear(), 0);
-        clearInterval(myInterval);
     } else if (monthLog.hasClass('active')) {
         chartFinder = createFinder(null, today.getMonth() + 1, today.getFullYear(), 0);
-        clearInterval(myInterval);
     } else {
         return;
     }
 
+    myLineChart.destroy();
     setChart(chartFinder);
+}
+
+function JSONToCSVConvertor(JSONData, ReportTitle, Type, ShowLabel) {
+    var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+
+    var CSV = '';
+
+    CSV += ReportTitle + '\r\n\n';
+
+    if (ShowLabel) {
+        if (Type === 'temperature') {
+            var row = "";
+            row += 'Date' + ',' + 'Device 1 - Temperature' + ',' + 'Device 2 - Temperature' + ',';
+            row = row.slice(0, -1);
+            CSV += row + '\r\n';
+        } else {
+            var row = "";
+            row += 'Date' + ',' + 'Device 3 - pH' + ',';
+            row = row.slice(0, -1);
+            CSV += row + '\r\n';
+        }
+    }
+
+    for (var i = 0; i < arrData.length; i++) {
+        var row = "";
+
+        if (typeof arrData[i].device[0] == 'undefined') { }
+        else {
+            if (arrData[i].device[0].type === Type && Type === 'temperature') {
+                for (var index in arrData[i]) {
+                    if (index == 'device') {
+                        row += '"' + arrData[i][index][0].value + '",';
+                        row += '"' + arrData[i][index][1].value + '",';
+                    } else {
+                        if (index == 'date') {
+                            row += '"' + arrData[i][index] + '",';
+                        }
+                    }
+                }
+
+                row.slice(0, row.length - 1);
+
+                CSV += row + '\r\n';
+            } 
+            if (arrData[i].device[0].type === Type && Type === 'ph') {
+                for (var index in arrData[i]) {
+                    if (index == 'device') {
+                        row += '"' + arrData[i][index][0].value + '",';
+                    } else {
+                        if (index == 'date') {
+                            row += '"' + arrData[i][index] + '",';
+                        }
+                    }
+                }
+
+                row.slice(0, row.length - 1);
+
+                CSV += row + '\r\n';
+            }
+        }
+    }
+
+    if (CSV == '') {
+        alert("Invalid data");
+        return;
+    }
+
+    var fileName = "Report_";
+    fileName += ReportTitle.replace(/ /g, "_");
+
+    var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+
+    var link = document.createElement("a");
+    link.href = uri;
+
+    link.style = "visibility:hidden";
+    link.download = fileName + ".csv";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
 $('.search-day-submit').on('click', function () {
@@ -336,9 +369,6 @@ $('.chart-search').on('click', function () {
 });
 
 $('.chart-export').on('click', function () {
-    todayLog.removeClass('active');
-    yesterdayLog.removeClass('active');
-    monthLog.removeClass('active');
     $('#downloadData').hide();
     $('#downloadButton').addClass('btn-primary');
     $('#downloadButton').removeClass('btn-secondary');
@@ -350,6 +380,9 @@ $('.chart-temp-1').on('click', function () {
     }
 
     $('.chart-temp-2').removeClass('active');
+    $('.chart-ph-3').removeClass('active');
+    $('.about-ph').hide();
+    $('.about-temperature').show();
     defaultHandler();
 });
 
@@ -359,11 +392,42 @@ $('.chart-temp-2').on('click', function () {
     }
 
     $('.chart-temp-1').removeClass('active');
+    $('.chart-ph-3').removeClass('active');
+    $('.about-ph').hide();
+    $('.about-temperature').show();
     defaultHandler();
 });
 
-$('#downloadData').on('click', function () {
-    this.href = 'data:application/json;charset=utf-8,'  + encodeURIComponent(JSON.stringify($('#downloadButton').data('download'), null, 2));
+$('.chart-ph-3').on('click', function () {
+    if (!$('.chart-ph-3').hasClass('active')) {
+        $('.chart-ph-3').addClass('active');
+    }
+
+    $('.chart-temp-1').removeClass('active');
+    $('.chart-temp-2').removeClass('active');
+    $('.about-temperature').hide();
+    $('.about-ph').show();
+    defaultHandler();
+});
+
+$('#downloadDataT').on('click', function () {
+    var data = $('#downloadButton').data('download');
+
+    if (!data) {
+        return;
+    }
+
+    JSONToCSVConvertor(data, "Temperature Sensor Data Report", "temperature", true);
+});
+
+$('#downloadDataP').on('click', function () {
+    var data = $('#downloadButton').data('download');
+
+    if (!data) {
+        return;
+    }
+
+    JSONToCSVConvertor(data, "PH Sensor Data Report", "ph", true);
 });
 
 $('#downloadButton').on('click', function () {
@@ -372,7 +436,9 @@ $('#downloadButton').on('click', function () {
             $('#downloadButton').data('download', data);
             $('#downloadButton').removeClass('btn-primary');
             $('#downloadButton').addClass('btn-secondary');
-            $('#downloadData').show();
+            $('#downloadButton').hide();
+            $('#downloadDataT').show();
+            $('#downloadDataP').show();
         }
     });
 });

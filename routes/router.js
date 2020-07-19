@@ -115,7 +115,7 @@ router.get('/presignin', function (req, res, next) {
 
 // update monitor
 router.get('/updateMonitor', function (req, res, next) {
-    getMongoObj('temperatureSensor', {topic: 'sensorTest'}, callback, 1);
+    getMongoObj('temperatureSensor', {topic: 'sensorTest'}, callback, 0, {date:-1});
     function callback(err, obj) {
         if (err) {
             throw err;
@@ -128,7 +128,7 @@ router.get('/updateMonitor', function (req, res, next) {
 // update chart
 router.get('/setChart', function (req, res, next) {
     var viewData = req.query.data;
-    getMongoObj('temperatureSensor', viewData.finder, callback, parseInt(viewData.limit));
+    getMongoObj('temperatureSensor', viewData.finder, callback, parseInt(viewData.limit), {date:-1});
     function callback(err, obj) {
         if (err) {
             throw err;
@@ -141,7 +141,7 @@ router.get('/setChart', function (req, res, next) {
 // update chart
 router.get('/updateChart', function (req, res, next) {
     var viewData = req.query.data;
-    getMongoObj('temperatureSensor', viewData.finder, callback, 1);
+    getMongoObj('temperatureSensor', viewData.finder, callback, 1, {date:-1});
     function callback(err, obj) {
         if (err) {
             throw err;
@@ -179,11 +179,11 @@ function checkUser(req, res, next, fileName) {
     });
 }
 
-function getMongoObj(collectionName, finder, callback, count) {
+function getMongoObj(collectionName, finder, callback, count, sorts) {
     mongoClient.connect(mongoUrl, function (err, db) {
         if (err) throw err;
         var dbo = db.db('test2');
-        dbo.collection(collectionName).find(finder).limit(count).sort({$natural:-1}).toArray(function (err, result) {
+        dbo.collection(collectionName).find(finder).limit(count).sort(sorts).toArray(function (err, result) {
             if (err) {
                 throw err;
             } else {
@@ -198,7 +198,7 @@ function insertMongoObj(collectionName, obj) {
     mongoClient.connect(mongoUrl, function (err, db) {
         if (err) throw err;
         var dbo = db.db('test2');
-        dbo.collection(collectionName).insertOne(obj, function (err, res) {
+        dbo.collection(collectionName).insert(obj, function (err, res) {
             if (err) throw err;
             console.log('1 document inserted');
             db.close();

@@ -25,13 +25,19 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script src="js/user.js" defer></script>
     <style>
-        @media (min-width: 1200px) {
+        .chart-area {
+            height: 10em;
+        }
+        @media (min-width: 992px) {
             .chart-area {
                 height: 25em;
             }
-        }
-        #myAreaChart {
-            pointer-events: none;
+            .d-pc {
+                display: inline !important;
+            }
+            .d-mobile {
+                display: none !important;
+            }
         }
     </style>
 
@@ -159,8 +165,9 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Data Analys</h1>
                         <div class="custom-date text-center pt-3 pb-2 pt-sm-0 pb-sm-0 ">
-                            <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-temp-1 active"> Sensor 1</a>
-                            <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-temp-2"> Sensor 2</a>
+                            <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-temp-1 active"> Temperature 1</a>
+                            <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-temp-2"> Temperature 2</a>
+                            <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-ph-3 mt-2 mt-lg-0"> pH Sensor 1</a>
                         </div>
                     </div>
 
@@ -177,8 +184,14 @@
                                             <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-td-log active"> Today</a>
                                             <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-ys-log"> YesterDay</a>
                                             <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-mn-log"> Month</a>
-                                            <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-search"> <i class="fas fa-search"></i></a>
-                                            <a data-toggle="modal" data-target="#downloadModal" href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-export"> <i class="fas fa-download"></i></a>
+                                            <div class="mt-2 d-mobile">
+                                                <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-search"> <i class="fas fa-search"></i></a>
+                                                <a data-toggle="modal" data-target="#downloadModal" href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-export"> <i class="fas fa-download"></i></a>
+                                            </div>
+                                            <div class="d-pc d-none">
+                                                <a href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-search"> <i class="fas fa-search"></i></a>
+                                                <a data-toggle="modal" data-target="#downloadModal" href="#" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm chart-export"> <i class="fas fa-download"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="card-header py-3 search-section">
@@ -200,38 +213,6 @@
 
                     </div>
 
-                    <div class="row chart-status-today">
-
-                        <div class="col-lg-6">
-                            <!-- Basic Card Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary log-specific">Log (Today)</h6>
-                                </div>
-                                <div class="card-body row">
-                                    <div class="col-12">
-                                        <h4><span class="date-log"></span><span style="float: right;" class="temperature-log"></span></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <!-- Basic Card Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Alert</h6>
-                                </div>
-                                <div class="card-body row">
-                                    <div class="col-12">
-                                        <h4><span class="alert-log"></span></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
                     <div class="row about-temperature">
 
                         <div class="col-lg-12">
@@ -246,7 +227,7 @@
                                         <p>Temperature is an important factor effecting the growth and survival of all organisms. However, water temperature is especially important to the growth and survival of shrimp, fish, and other aquaculture animals, because they are poikilothermic (coldblooded). Poikilothermic animals cannot control body temperature, and they equilibrate with the temperature of the surrounding water. Aquaculture animals usually are classified as coldwater, warmwater, and tropical species.</p>
                                         <p>Coldwater species will not tolerate temperatures above 20 to 25 degrees-C. Warmwater species will usually not reproduce at temperatures below 20 degrees-C or grow at temperatures below 10 to 15 degrees-C, but they survive much lower winter temperatures. Tropical species will die at temperatures of 10 to 20 degrees-C, and most do not grow at temperatures below 25 degrees-C.</p>
                                         <p>For aquarium, a good range is 76° to 80°F (25° to 27°C).</p>
-                                        <p>In the line chart above, the high-limit (<span style="color: rgba(204, 0, 0, 1);">red line</span>) and the low-limit (<span style="color: rgba(78, 115, 223, 1);">blue line</span>) shown the temperature range that if the aquarium temperature (<span style="color: rgba(0, 136, 39, 1);">green line</span>) is higher or lower these line will cause bad effects.</p>
+                                        <p>Sensor 1 and Sensor 2 are temperature sensors, Sensor 3 is pH sensor.</p>
                                         <p>References:</p>
                                         <p><a href="https://www.aquaculturealliance.org/advocate/water-temperature-in-aquaculture/" target="_blank" rel="noopener noreferrer">Water temperature in aquaculture</a></p>
                                         <p><a href="http://www.tfhmagazine.com/aquarium-basics/temperature-control.htm" target="_blank" rel="noopener noreferrer">Temperature Control</a></p>
@@ -256,6 +237,33 @@
                         </div>
 
                     </div>
+
+                    <div class="row about-ph">
+
+                        <div class="col-lg-12">
+                            <!-- Basic Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">About pH</h6>
+                                </div>
+                                <div class="card-body row">
+                                    <div class="col-12">
+                                        <p>pH is a measurement of electrically charged particles in a substance. It indicates how acidic or alkaline (basic) that substance is. The pH scale ranges from 0 to 14:</p>
+                                        <p>Acidic water has a pH lower than 7. The most acidic substances have a pH of 0. Battery acid falls into this category.</p>
+                                        <p>Alkaline water has a pH of 8 or above. The most alkaline substances, such as lye, have a pH of 14.</p>
+                                        <p>Pure water has a pH of 7 and is considered “neutral” because it has neither acidic nor basic qualities.</p>
+                                        <p>pH isn’t a quality that falls under EPA regulation because it’s considered an aesthetic quality of water. However, the agency recommends that municipal drinking water suppliers keep their water supply at a pH of 6.5 to 8.5.</p>
+                                        <p>For aquarium, most freshwater aquarium tropical fish do best at a pH of 6 to 8.5.</p>
+                                        <p>Sensor 1 and Sensor 2 are temperature sensors, Sensor 3 is pH sensor.</p>
+                                        <p>References:</p>
+                                        <p><a href="https://www.healthline.com/health/ph-of-drinking-water" target="_blank" rel="noopener noreferrer">What is pH</a></p>
+                                        <p><a href="https://www.aqueon.com/articles/freshwater-aquarium-water-quality" target="_blank" rel="noopener noreferrer">Freshwater Aquarium Water Quality</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div
 
                 </div>
                 <!-- /.container-fluid -->
@@ -319,7 +327,8 @@
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="#" id="downloadButton">Prepare</a>
-                    <a class="btn btn-primary" href="#" id="downloadData" download="sensorData.json">Download</a>
+                    <a class="btn btn-primary" href="#" id="downloadDataT">Temperature</a>
+                    <a class="btn btn-primary" href="#" id="downloadDataP">pH</a>
                 </div>
             </div>
         </div>

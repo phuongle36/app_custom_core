@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    window.onload = function () {
+    function onRun () {
         var userName = $('.user-fullname');
         var userMail = $('.user-email');
         var userRole = $('.user-role');
@@ -17,4 +17,6 @@ $(document).ready(function () {
             }
         });
     };
+    
+    setInterval(onRun, 500);
 });
